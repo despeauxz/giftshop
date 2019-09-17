@@ -13,4 +13,10 @@ describe('My First Test', () => {
     cy.get('button').click();
     cy.get('button').should('contain', 'Changed');
   });
+
+  it('Navigate to the Login Page', () => {
+    cy.visit('localhost:8080/login');
+    cy.get('input').type('example@gmail.com');
+    cy.get('button').click();
+  });
 });
