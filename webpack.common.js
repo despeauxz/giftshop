@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require('dotenv-webpack');
@@ -69,5 +70,10 @@ module.exports = {
       filename: "client/public/stylesheet/styles.css",
       chunkFilename: "styles.css"
     }),
+    new webpack.ProvidePlugin({
+      '_': 'lodash',
+      'React': 'react',
+      'ReactDOM': 'react-dom'
+    })
   ]
 };

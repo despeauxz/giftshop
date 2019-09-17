@@ -1,0 +1,36 @@
+body {
+  background: #363740;
+}
+
+.auth {
+
+  .container {
+    width: 60%;
+    margin: auto;
+  }
+}
+
+.logo {
+
+  img {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+}
+
+.auth-img {
+  background-image: url('../../../../public/images/auth.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.auth-wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+.bg-blue-500 {
+  background: #3751FF !important;
+}

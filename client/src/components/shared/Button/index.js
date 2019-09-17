@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import './index.scss';
 
-const Button = ({ type, outline, variant, size, round, color, children, ...rest }) => {
+const Button = ({ type, outline, variant, size, round, color, stretch, children, ...rest }) => {
   const buttonSize = () => {
     let value = '';
     switch(size) {
@@ -26,12 +26,15 @@ const Button = ({ type, outline, variant, size, round, color, children, ...rest 
 
   return (
     <button type={type} {...rest} className={classnames(
-      'text-sm outline-none',
+      'text-sm outline-none rounded',
       {
         [`text-${color}-${variant} border border-${color}-${variant} bg-transparent hover:text-${color}-${variant - 100}`]: outline === true
       },
       {
-        [`bg-${color}-${variant} text-white border-${color}-${variant} hover:border-transparent hover:text-${color - 100} hover:bg-${color}-${variant + 100}`]: outline === undefined
+        ['block w-full']: stretch === true
+      },
+      {
+        [`bg-${color}-${variant} text-white border-${color}-${variant} hover:border-transparent hover:text-${variant - 100} hover:bg-${color}-${variant + 100}`]: outline === undefined
       },
       {
         ['rounded-full']: round === true
@@ -48,10 +51,11 @@ const Button = ({ type, outline, variant, size, round, color, children, ...rest 
 Button.propTypes = {
   type: PropTypes.string.isRequired,
   outline: PropTypes.bool,
-  size: PropTypes.oneOf(['big', 'medium', 'small']).isRequired,
+  size: PropTypes.oneOf(['big', 'medium', 'small']),
   round: PropTypes.bool,
   variant: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
+  stretch: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
@@ -59,6 +63,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  size: 'small',
   type: 'button',
   variant: 400
 };
